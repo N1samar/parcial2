@@ -4,7 +4,7 @@ import { Controller, Post, Body } from '@nestjs/common';
 import { LoginDto } from './dto/login.dto';
 import { ILoginResponse } from './interfaces/login.interface';
 
-@Controller('auth')
+@Controller('login')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
