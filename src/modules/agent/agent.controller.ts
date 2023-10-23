@@ -1,37 +1,18 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { AgentService } from './agent.service';
-import { CreateAgentDto } from './dto/create-agent.dto';
-import { UpdateAgentDto } from './dto/update-agent.dto';
+import { IAgent } from './interfaces/agent.interface';
 
 @Controller('agent')
 export class AgentController {
   constructor(private readonly agentService: AgentService) {}
 
-  @Post()
-  create(@Body() createAgentDto: CreateAgentDto) {
-    return this.agentService.create(createAgentDto);
-  }
-
   @Get()
-  findAll() {
+  findAll(): Promise<IAgent[]> {
     return this.agentService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.agentService.findOne(+id);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.agentService.remove(+id);
   }
 }
