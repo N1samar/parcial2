@@ -1,11 +1,12 @@
 export interface IClient {
-    Id_cli: number;
-  Name_cli: string;
-  Type_id: string;
-  Client: string;
-  Type_client: string;
-  }
-  
-  export interface IClientCreate extends IClient {}
-  
-  export interface IClientUpdate extends Partial<IClientCreate> {}
+  id: number;
+  name: string;
+  typeIdentification: string;
+  identification: string;
+  client: string;
+  typeClient: string;
+}
+
+export interface IClientCreate extends Omit<IClient, 'id'> {}
+
+export interface IClientUpdate extends Partial<IClientCreate> {}

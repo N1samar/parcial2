@@ -1,8 +1,8 @@
 export interface ITurn {
-  Id_turn: number;
-  Num_turn: string;
+  id: number;
+  numTurn: string;
 }
 
-export interface ITurnCreate extends ITurn {}
+export interface ITurnCreate extends Omit<ITurn, 'id'> {}
 
 export interface ITurnUpdate extends Partial<ITurnCreate> {}

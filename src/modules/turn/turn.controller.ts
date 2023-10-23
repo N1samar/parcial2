@@ -1,21 +1,28 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { TurnService } from './turn.service';
 import { CreateTurnDto } from './dto/create-turn.dto';
 import { UpdateTurnDto } from './dto/update-turn.dto';
-import { promises } from 'dns';
-import { ITurn, ITurnCreate } from './interfaces/turn.interface';
+import { ITurn } from './interfaces/turn.interface';
 
 @Controller('turn')
 export class TurnController {
   constructor(private readonly turnService: TurnService) {}
 
   @Post()
-  create(@Body() createTurnDto: CreateTurnDto): Promise<ITurnCreate> {
-    return this.turnService.create(createTurnDto);
+  create(@Body() createTurnDto: CreateTurnDto) {
+    return '';
   }
 
   @Get()
-  findAll(): Promise<ITurn[]>{
+  findAll(): Promise<ITurn[]> {
     return this.turnService.findAll();
   }
 

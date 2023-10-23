@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAgentDto } from './dto/create-agent.dto';
-import { UpdateAgentDto } from './dto/update-agent.dto';
 
 @Injectable()
 export class AgentService {
@@ -14,10 +13,6 @@ export class AgentService {
 
   findOne(id: number) {
     return `This action returns a #${id} agent`;
-  }
-
-  update(id: number, updateAgentDto: UpdateAgentDto) {
-    return `This action updates a #${id} agent`;
   }
 
   remove(id: number) {

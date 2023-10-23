@@ -1,19 +1,26 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Service } from 'src/modules/service/entities/service.entity';
 
 @Entity()
 export class Client {
-    @PrimaryGeneratedColumn()
-  Id_cli: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-  @Column({length: 50})
-  Name_cli: string;
+  @Column({ length: 50 })
+  name: string;
 
-  @Column()
-  Type_id: string;
-
-  @Column()
-  Client: string;
+  @Column({ type: 'varchar' })
+  typeIdentification: string;
 
   @Column()
-  Type_client: string;
+  identification: string;
+
+  @Column()
+  client: string;
+
+  @Column()
+  typeClient: string;
+
+  @ManyToOne(() => Service, (service) => service.client)
+  service: Service;
 }

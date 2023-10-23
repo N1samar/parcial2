@@ -1,11 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { CreateTurnDto } from './dto/create-turn.dto';
-import { UpdateTurnDto } from './dto/update-turn.dto';
 import { Turn } from './entities/turn.entity';
 import { ITurn, ITurnCreate, ITurnUpdate } from './interfaces/turn.interface';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-
 
 @Injectable()
 export class TurnService {
@@ -13,9 +10,9 @@ export class TurnService {
     @InjectRepository(Turn)
     private turnRepository: Repository<Turn>,
   ) {}
-  async create(createUser: ITurnCreate): Promise<ITurnCreate> {
-    const saltOrRounds = 10;
-    const passwordHash =
+
+  async create(createTurn: ITurnCreate): Promise<ITurnCreate> {
+    return this.turnRepository.save(createTurn);
   }
 
   findAll(): Promise<ITurn[]> {
@@ -33,7 +30,7 @@ export class TurnService {
   }
 
   async remove(id: number): Promise<ITurn> {
-    const result = this.turnRepository.findOneBy({ id});
+    const result = this.turnRepository.findOneBy({ id });
     await this.turnRepository.delete(id);
     return result;
   }

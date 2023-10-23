@@ -7,13 +7,14 @@ import { ServiceModule } from './modules/service/service.module';
 import { TurnModule } from './modules/turn/turn.module';
 import { ProcedureModule } from './modules/procedure/procedure.module';
 import { AgentModule } from './modules/agent/agent.module';
+import { UploadModule } from './modules/upload/upload.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
-      port: 3307,
+      port: 3306,
       username: 'root',
       password: '',
       database: 'parcial_2',
@@ -28,6 +29,7 @@ import { AgentModule } from './modules/agent/agent.module';
     TurnModule,
     ProcedureModule,
     AgentModule,
+    UploadModule,
   ],
 })
 export class AppModule {}

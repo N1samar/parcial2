@@ -1,13 +1,14 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Service } from 'src/modules/service/entities/service.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Agent {
-    @PrimaryGeneratedColumn()
-    Id_age: number;
-  
-    @Column({length: 50})
-    Name_agent: string;
-  
-    @Column()
-    Type_agent: string;
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({ length: 50 })
+  nameAgent: string;
+
+  @ManyToOne(() => Service, (service) => service.agent)
+  service: Service;
 }
